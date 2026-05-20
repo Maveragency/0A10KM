@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAVERA – Agence de Créatives Ads</title>
+<meta name="description" content="Vidéos ads haute conversion & gestion Meta Ads pour les business qui veulent passer au niveau supérieur. Agence française, livraison en 48h.">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F47C20;
+    --orange-light: #FF9A3C;
+    --orange-pale: #FFF3E8;
+    --dark: #111111;
+    --gray: #666;
+    --light-gray: #F5F5F5;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 22px;
+    color: var(--dark); text-decoration: none;
+  }
+  .nav-logo .m-icon {
+    width: 36px; height: 36px; background: var(--orange); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 18px; font-weight: 800;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a { font-size: 14px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--dark); }
+  .nav-cta {
+    background: var(--orange); color: white !important;
+    padding: 11px 22px; border-radius: 100px;
+    font-weight: 500; font-size: 14px; transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange-light) !important; transform: translateY(-1px); }
+
+  /* ══════════════════════════════
+     HERO
+  ══════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 58% 42%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Colonne gauche — texte */
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 140px 56px 80px 48px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange-pale); color: var(--orange);
+    padding: 7px 16px; border-radius: 100px;
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 28px; align-self: flex-start;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px; background: var(--orange);
+    border-radius: 50%; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.5; transform:scale(1.3); }
+  }
+
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(38px, 4vw, 66px);
+    font-weight: 800; line-height: 1.05; margin-bottom: 22px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+
+  .hero-desc {
+    font-size: 17px; color: var(--gray); line-height: 1.65;
+    margin-bottom: 36px; max-width: 420px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 52px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--orange); color: white;
+    padding: 15px 28px; border-radius: 100px;
+    font-weight: 500; font-size: 15px;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover {
+    background: var(--orange-light); transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(244,124,32,0.3);
+  }
+  .btn-secondary {
+    background: var(--light-gray); color: var(--dark);
+    padding: 15px 28px; border-radius: 100px;
+    font-weight: 500; font-size: 15px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: #e8e8e8; transform: translateY(-2px); }
+
+  /* Stats en bas de la colonne gauche */
+  .hero-stats {
+    display: flex; gap: 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding-top: 32px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .hero-stat {
+    flex: 1; padding-right: 24px;
+    border-right: 1px solid rgba(0,0,0,0.08);
+    margin-right: 24px;
+  }
+  .hero-stat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+  .hero-stat-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px; font-weight: 800; color: var(--dark); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-num span { color: var(--orange); }
+  .hero-stat-label { font-size: 12px; color: var(--gray); }
+
+  /* Colonne droite — bloc orange avec stats */
+  .hero-right {
+    background: var(--orange);
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 140px 32px 80px 36px;
+    position: relative; overflow: hidden;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  /* Texture points */
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+
+  /* Grand chiffre déco en fond */
+  .hero-right-deco {
+    position: absolute; bottom: -20px; right: -10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 200px; font-weight: 900;
+    color: rgba(255,255,255,0.08);
+    line-height: 1; letter-spacing: -6px;
+    pointer-events: none; user-select: none;
+  }
+
+  .hero-right-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 40px;
+    position: relative; z-index: 1;
+  }
+
+  /* Cards de stats */
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; position: relative; z-index: 1;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px; padding: 16px 18px;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s;
+  }
+  .stat-card:hover { background: rgba(255,255,255,0.18); }
+
+  .stat-card-icon { font-size: 18px; margin-bottom: 8px; display: block; }
+
+  .stat-card-val {
+    font-family: 'Outfit', sans-serif;
+    font-size: 26px; font-weight: 800;
+    color: white; line-height: 1; margin-bottom: 4px;
+  }
+  .stat-card-val sup { font-size: 14px; vertical-align: super; }
+
+  .stat-card-label {
+    font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.4;
+  }
+
+  /* Card large (pleine largeur) */
+  .stat-card-wide {
+    grid-column: span 2;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .stat-card-wide .stat-card-val { font-size: 28px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ══════════════════════════════
+     SECTION VIDÉO
+  ══════════════════════════════ */
+  .section-video {
+    padding: 100px 48px;
+    background: var(--white);
+  }
+  .section-video .container { max-width: 1100px; margin: 0 auto; }
+
+  .video-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 48px; gap: 24px; flex-wrap: wrap;
+  }
+  .video-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800; line-height: 1.1;
+  }
+  .video-header h2 em { font-style: normal; color: var(--orange); }
+  .video-header p { color: var(--gray); font-size: 16px; max-width: 340px; line-height: 1.6; }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+
+  .video-main { position: relative; border-radius: 20px; overflow: hidden; background: var(--dark); aspect-ratio: 16/9; }
+  .video-main video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .video-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: var(--light-gray); border-radius: 20px;
+    border: 2px dashed rgba(244,124,32,0.3);
+    color: var(--gray); text-align: center; gap: 12px;
+    min-height: 280px;
+  }
+  .video-placeholder-icon { font-size: 40px; opacity: 0.5; }
+  .video-placeholder-text { font-size: 14px; color: var(--gray); }
+  .video-placeholder-hint { font-size: 12px; color: rgba(102,102,102,0.6); }
+
+  .video-side { display: flex; flex-direction: column; gap: 16px; }
+
+  .video-small {
+    position: relative; border-radius: 16px; overflow: hidden;
+    background: var(--dark); flex: 1;
+  }
+  .video-small video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .video-label {
+    position: absolute; bottom: 12px; left: 12px;
+    background: rgba(0,0,0,0.6); color: white;
+    font-size: 11px; font-weight: 500;
+    padding: 5px 10px; border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ══════════════════════════════
+     RESTE
+  ══════════════════════════════ */
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 20px;
+  }
+
+  .section-problems { padding: 100px 48px; background: var(--dark); color: white; }
+  .section-problems h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(32px, 4vw, 52px); font-weight: 800; margin-bottom: 16px; line-height: 1.1;
+  }
+  .section-problems h2 em { font-style: normal; color: var(--orange); }
+  .section-problems .subtitle { color: rgba(255,255,255,0.45); font-size: 17px; margin-bottom: 56px; max-width: 480px; }
+
+  .problems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .problem-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px; padding: 32px; transition: all 0.3s;
+  }
+  .problem-card:hover { background: rgba(244,124,32,0.08); border-color: rgba(244,124,32,0.3); transform: translateY(-4px); }
+  .problem-icon {
+    width: 48px; height: 48px; background: rgba(244,124,32,0.15);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 20px;
+  }
+  .problem-card h3 { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--orange); margin-bottom: 10px; }
+  .problem-card p { color: rgba(255,255,255,0.45); font-size: 14px; line-height: 1.65; }
+
+  .section-services { padding: 100px 48px; background: var(--white); }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-header h2 { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+  .section-header h2 em { font-style: normal; color: var(--orange); }
+  .section-header p { color: var(--gray); font-size: 17px; max-width: 460px; margin: 0 auto; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+  .service-card { background: var(--light-gray); border-radius: 24px; padding: 40px; position: relative; overflow: hidden; transition: all 0.3s; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.1); }
+  .service-card.featured { background: var(--orange); color: white; }
+  .service-number { font-family: 'Outfit', sans-serif; font-size: 64px; font-weight: 800; color: rgba(0,0,0,0.06); position: absolute; top: 16px; right: 24px; line-height: 1; }
+  .service-card.featured .service-number { color: rgba(255,255,255,0.15); }
+  .service-emoji { font-size: 36px; margin-bottom: 20px; display: block; }
+  .service-card h3 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+  .service-card p { font-size: 15px; line-height: 1.6; color: var(--gray); margin-bottom: 24px; }
+  .service-card.featured p { color: rgba(255,255,255,0.8); }
+  .service-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .service-features li { font-size: 14px; color: var(--gray); display: flex; align-items: center; gap: 8px; }
+  .service-card.featured .service-features li { color: rgba(255,255,255,0.85); }
+  .service-features li::before {
+    content: '✓'; width: 20px; height: 20px; background: rgba(244,124,32,0.15); color: var(--orange);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; flex-shrink: 0;
+  }
+  .service-card.featured .service-features li::before { background: rgba(255,255,255,0.2); color: white; }
+
+  .section-process { padding: 100px 48px; background: var(--orange-pale); }
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 64px; }
+  .process-step { text-align: center; }
+  .step-number {
+    width: 56px; height: 56px; background: var(--orange); color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; margin: 0 auto 20px;
+  }
+  .process-step h3 { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .process-step p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+  .section-cta { padding: 100px 48px; background: var(--dark); text-align: center; }
+  .section-cta h2 { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 800; color: white; line-height: 1.1; margin-bottom: 20px; }
+  .section-cta h2 em { font-style: normal; color: var(--orange); }
+  .section-cta p { color: rgba(255,255,255,0.45); font-size: 17px; margin-bottom: 40px; max-width: 460px; margin-left: auto; margin-right: auto; }
+  .cta-contact {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--orange); color: white;
+    padding: 18px 40px; border-radius: 100px;
+    font-size: 17px; font-weight: 500; text-decoration: none; transition: all 0.2s;
+  }
+  .cta-contact:hover { background: var(--orange-light); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(244,124,32,0.4); }
+
+  footer { padding: 40px 48px; background: #0a0a0a; text-align: center; }
+  footer .footer-logo { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 800; color: white; margin-bottom: 12px; }
+  footer .footer-logo span { color: var(--orange); }
+  footer p { color: rgba(255,255,255,0.3); font-size: 13px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav {
+      padding: 16px 20px;
+      justify-content: center;
+    }
+    .nav-links { display: none; }
+    .nav-logo { font-size: 34px; }
+    .nav-logo .m-icon { width: 58px; height: 58px; font-size: 30px; }
+
+    .hero { grid-template-columns: 1fr; }
+
+    .hero-left { padding: 100px 24px 48px; text-align: center; }
+    .hero-badge { align-self: center; }
+    .hero-desc { max-width: 100%; }
+    .hero-buttons { justify-content: center; }
+    .hero-stats { justify-content: center; gap: 0; }
+
+    .hero-right { display: none; }
+
+    .section-video { padding: 72px 24px; }
+    .video-grid { grid-template-columns: 1fr; }
+    .video-side { flex-direction: row; }
+    .video-small { min-height: 160px; }
+
+    .section-problems, .section-services,
+    .section-process, .section-cta { padding: 72px 24px; }
+    footer { padding: 32px 24px; }
+  }
+  @media (max-width: 500px) {
+    .video-side { flex-direction: column; }
+    .hero-stats { flex-wrap: wrap; gap: 16px; }
+    .hero-stat { border-right: none; margin-right: 0; padding-right: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+<img src="ton-logo.png" alt="MAVERA" style="height: 56px; width: auto;">
+      </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#contact" class="nav-cta">Nous contacter →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- Gauche : texte -->
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Agence de Créatives Ads
+    </div>
+    <h1>Déléguez vos <em>créas.</em><br>Scalez vos <em>résultats.</em></h1>
+    <p class="hero-desc">Vidéos ads haute conversion & gestion Meta Ads pour les business qui veulent passer au niveau supérieur.</p>
+    <div class="hero-buttons">
+      <a href="mailto:maveraagency88@gmail.com" class="btn-primary">Nous contacter →</a>
+      <a href="#services" class="btn-secondary">Nos services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">48<span>h</span></div>
+        <div class="hero-stat-label">Livraison garantie</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100<span>%</span></div>
+        <div class="hero-stat-label">Orienté résultats</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">🇫🇷</div>
+        <div class="hero-stat-label">Agence française</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Droite : bloc orange avec stats -->
+  <div class="hero-right">
+    <div class="hero-right-deco">×</div>
+    <div class="hero-right-title">Nos chiffres clés</div>
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <span class="stat-card-icon">⚡</span>
+        <div class="stat-card-val">48<sup>h</sup></div>
+        <div class="stat-card-label">Délai de livraison moyen</div>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-card-icon">📈</span>
+        <div class="stat-card-val">100<sup>%</sup></div>
+        <div class="stat-card-label">Orienté performance</div>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-card-icon">🎬</span>
+        <div class="stat-card-val">A→Z</div>
+        <div class="stat-card-label">Script, montage, diffusion</div>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-card-icon">🇫🇷</span>
+        <div class="stat-card-val">FR</div>
+        <div class="stat-card-label">Agence 100% française</div>
+      </div>
+
+      <div class="stat-card stat-card-wide">
+        <span class="stat-card-icon" style="font-size:28px; margin-bottom:0;">🎯</span>
+        <div>
+          <div class="stat-card-val">Meta Ads</div>
+          <div class="stat-card-label">Gestion complète de vos campagnes — ciblage, optimisation, reporting</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- VIDÉOS -->
+<section class="section-video" id="videos">
+  <div class="container">
+    <div class="video-header">
+      <div>
+        <div class="section-tag">🎬 Nos créations</div>
+        <h2>Des vidéos qui <em>convertissent</em></h2>
+      </div>
+      <p>Chaque vidéo est conçue pour capter l'attention et pousser à l'action dès les premières secondes.</p>
+    </div>
+
+    <div class="video-grid">
+
+      <!-- Vidéo principale -->
+      <div class="video-main">
+        <!--
+          POUR AJOUTER VOTRE VIDÉO PRINCIPALE :
+          1. Placez votre fichier .mp4 dans le même dossier que ce fichier HTML
+          2. Remplacez "votre-video-principale.mp4" par le nom de votre fichier
+          3. Supprimez le bloc "video-placeholder" ci-dessous
+        -->
+        <div class="video-placeholder">
+          <div class="video-placeholder-icon">🎬</div>
+          <div class="video-placeholder-text">Vidéo principale</div>
+          <div class="video-placeholder-hint">Remplacez cette zone par votre fichier .mp4</div>
+        </div>
+        <!-- Décommentez quand vous avez votre vidéo :
+        <video controls poster="">
+          <source src="votre-video-principale.mp4" type="video/mp4">
+        </video>
+        -->
+        <div class="video-label">Vidéo #1</div>
+      </div>
+
+      <!-- Vidéos secondaires -->
+      <div class="video-side">
+
+        <div class="video-small">
+          <div class="video-placeholder" style="min-height:0; height:100%; border-radius:16px;">
+            <div class="video-placeholder-icon" style="font-size:28px;">🎬</div>
+            <div class="video-placeholder-hint">Vidéo .mp4</div>
+          </div>
+          <!-- Décommentez quand vous avez votre vidéo :
+          <video controls>
+            <source src="votre-video-2.mp4" type="video/mp4">
+          </video>
+          -->
+          <div class="video-label">Vidéo #2</div>
+        </div>
+
+        <div class="video-small">
+          <div class="video-placeholder" style="min-height:0; height:100%; border-radius:16px;">
+            <div class="video-placeholder-icon" style="font-size:28px;">🎬</div>
+            <div class="video-placeholder-hint">Vidéo .mp4</div>
+          </div>
+          <!-- Décommentez quand vous avez votre vidéo :
+          <video controls>
+            <source src="votre-video-3.mp4" type="video/mp4">
+          </video>
+          -->
+          <div class="video-label">Vidéo #3</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMES -->
+<section class="section-problems">
+  <div class="container">
+    <div class="section-tag">⚡ Votre situation actuelle</div>
+    <h2>Pourquoi vos ads<br><em>ne convertissent pas</em></h2>
+    <p class="subtitle">Les raisons les plus fréquentes chez nos clients avant MAVERA.</p>
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="problem-icon">⏰</div>
+        <h3>Pas le temps</h3>
+        <p>Gérer votre business vous prend déjà 100% de votre énergie. Créer du contenu de qualité passe toujours en dernier.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">📉</div>
+        <h3>ROAS en chute</h3>
+        <p>Vos créas se fatiguent, vos audiences se lassent. Les résultats baissent semaine après semaine.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🎨</div>
+        <h3>Créas monotones</h3>
+        <p>Toujours les mêmes formats, votre audience décroche. Vous manquez de fraîcheur et de diversité créative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">🚀 Ce qu'on fait</div>
+      <h2>Nos <em>services</em></h2>
+      <p>Deux expertises complémentaires pour maximiser vos performances.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card featured">
+        <span class="service-number">01</span>
+        <span class="service-emoji">🎬</span>
+        <h3>Vidéos Ads</h3>
+        <p>Des vidéos conçues pour convertir dès les premières secondes. Formats adaptés à Meta, TikTok et Instagram.</p>
+        <ul class="service-features">
+          <li>Scripts & storyboards</li>
+          <li>Montage professionnel</li>
+          <li>Sous-titres & motion design</li>
+          <li>Formats multi-plateformes</li>
+          <li>Livraison en 48h</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="service-number">02</span>
+        <span class="service-emoji">📊</span>
+        <h3>Gestion Meta Ads</h3>
+        <p>On gère vos campagnes Meta de A à Z pour maximiser votre ROAS et scaler vos résultats.</p>
+        <ul class="service-features">
+          <li>Audit de votre compte</li>
+          <li>Création des campagnes</li>
+          <li>Ciblage & audiences</li>
+          <li>Optimisation continue</li>
+          <li>Reporting mensuel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-process" id="process">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">📋 Comment ça marche</div>
+      <h2>Un process <em>simple</em> et efficace</h2>
+      <p>De la prise de contact à la livraison en 4 étapes.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h3>Appel découverte</h3>
+        <p>On analyse votre business, vos objectifs et vos besoins en 30 minutes.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h3>Stratégie créative</h3>
+        <p>On définit les concepts, formats et messages qui vont performer.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h3>Production</h3>
+        <p>On crée vos vidéos et configure vos campagnes avec soin.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h3>Lancement & suivi</h3>
+        <p>On lance, on optimise et on scale vos résultats en continu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-cta" id="contact">
+  <div class="container">
+    <h2>Prêt à <em>scaler</em><br>votre business ?</h2>
+    <p>Contactez-nous directement. On revient vers vous rapidement pour discuter de votre projet.</p>
+    <a href="mailto:maveraagency88@gmail.com" class="cta-contact">
+      📩 Nous contacter
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MAV<span>ERA</span></div>
+  <p>© 2025 MAVERA Marketing Agency – Tous droits réservés</p>
+</footer>
+
+</body>
+</html>
