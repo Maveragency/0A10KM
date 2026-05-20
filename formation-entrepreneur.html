@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation Entrepreneur — De Zéro à 10K€</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #0a0a0f;
+    --card: #13131a;
+    --card2: #1a1a24;
+    --accent: #7c5cfc;
+    --accent2: #fc5c7d;
+    --gold: #f5c518;
+    --text: #e8e8f0;
+    --muted: #888899;
+    --border: #2a2a3a;
+    --green: #22d98a;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .hero {
+    background: linear-gradient(135deg, #1a0533 0%, #0d1a3a 50%, #0a0a0f 100%);
+    padding: 60px 40px 50px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(124,92,252,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(124,92,252,0.15);
+    border: 1px solid rgba(124,92,252,0.4);
+    color: #b39dfd;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, #b39dfd 60%, #fc5c7d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat strong {
+    display: block;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+  }
+  .hero-stat span {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* NAV */
+  .nav-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 4px;
+    padding: 16px 40px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--text); background: var(--card2); }
+  .tab-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  /* MAIN */
+  .main { max-width: 1000px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* MODULE CARDS */
+  .module-intro {
+    background: linear-gradient(135deg, rgba(124,92,252,0.1), rgba(252,92,125,0.05));
+    border: 1px solid rgba(124,92,252,0.3);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .module-intro h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .module-intro p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: rgba(124,92,252,0.4); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .icon-purple { background: rgba(124,92,252,0.15); }
+  .icon-pink { background: rgba(252,92,125,0.15); }
+  .icon-gold { background: rgba(245,197,24,0.15); }
+  .icon-green { background: rgba(34,217,138,0.15); }
+
+  .card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .card .subtitle {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .card p, .card li {
+    font-size: 14px;
+    color: #c0c0d0;
+    line-height: 1.75;
+  }
+  .card ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card li::before {
+    content: '→';
+    color: var(--accent);
+    margin-right: 8px;
+    font-weight: 700;
+  }
+
+  /* QUOTE BLOCKS */
+  .quote {
+    border-left: 3px solid var(--accent);
+    background: rgba(124,92,252,0.07);
+    padding: 14px 18px;
+    border-radius: 0 10px 10px 0;
+    margin: 12px 0;
+    font-style: italic;
+    color: #d0d0e8;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* STEPS */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+  .step-content p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* FRAMEWORK BOX */
+  .framework {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .framework-title {
+    background: linear-gradient(90deg, rgba(124,92,252,0.3), transparent);
+    padding: 14px 24px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b39dfd;
+    border-bottom: 1px solid var(--border);
+  }
+  .framework-body { padding: 20px 24px; }
+
+  /* PILL TAGS */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .tag {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .tag-purple { background: rgba(124,92,252,0.15); color: #b39dfd; border: 1px solid rgba(124,92,252,0.3); }
+  .tag-green { background: rgba(34,217,138,0.1); color: var(--green); border: 1px solid rgba(34,217,138,0.3); }
+  .tag-gold { background: rgba(245,197,24,0.1); color: var(--gold); border: 1px solid rgba(245,197,24,0.3); }
+  .tag-pink { background: rgba(252,92,125,0.1); color: #fc8fa3; border: 1px solid rgba(252,92,125,0.3); }
+
+  /* ALERT BOX */
+  .alert {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .alert-warn { background: rgba(245,197,24,0.08); border: 1px solid rgba(245,197,24,0.25); color: #e8d88a; }
+  .alert-success { background: rgba(34,217,138,0.08); border: 1px solid rgba(34,217,138,0.25); color: #8ae8c8; }
+  .alert-danger { background: rgba(252,92,125,0.08); border: 1px solid rgba(252,92,125,0.25); color: #f5a0b0; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .mini-card {
+    background: var(--card2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .mini-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .mini-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #c0c0d0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    line-height: 1.6;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(34,217,138,0.15);
+    border: 1.5px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  /* TONALITY */
+  .tonality-card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  .tonality-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tonality-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+  .tonality-ex {
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #a0d0ff;
+    font-style: italic;
+    border-left: 2px solid var(--accent);
+  }
+
+  /* SPECTRUM */
+  .spectrum-bar {
+    height: 10px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #fc5c7d, #888, #22d98a);
+    margin: 16px 0 8px;
+    position: relative;
+  }
+  .spectrum-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">Formation Complète</div>
+  <h1>De Zéro à 10K€/mois<br>Le Guide Complet</h1>
+  <p>Toutes les techniques et frameworks extraits des 8 lives de formation. Cold-call, closing, offre, mindset, délivrabilité SMMA — tout est là.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>8</strong><span>Lives analysés</span></div>
+    <div class="hero-stat"><strong>50+</strong><span>Techniques actionnables</span></div>
+    <div class="hero-stat"><strong>6</strong><span>Modules complets</span></div>
+  </div>
+</div>
+
+<div class="nav-tabs">
+  <button class="tab-btn active" onclick="showSection('mindset')">🧠 Mindset</button>
+  <button class="tab-btn" onclick="showSection('offre')">🎯 Construire son offre</button>
+  <button class="tab-btn" onclick="showSection('coldcall')">📞 Cold-Call</button>
+  <button class="tab-btn" onclick="showSection('closing')">💰 Closing</button>
+  <button class="tab-btn" onclick="showSection('terrain')">🏙️ Prospection terrain</button>
+  <button class="tab-btn" onclick="showSection('smma')">📱 Délivrabilité SMMA</button>
+</div>
+
+<div class="main">
+
+  <!-- ===================== MINDSET ===================== -->
+  <div id="mindset" class="section active">
+    <div class="module-intro">
+      <h2>🧠 Module 1 — Mindset & Programmation</h2>
+      <p>Avant toute technique, il faut comprendre pourquoi tu es bloqué. Ce module couvre la programmation environnementale, la théorie du spectre, la courbe de l'effort et les lois de la performance mentale.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🧬</div>
+        <div><div class="subtitle">Fondamental #1</div><h3>Le cerveau page blanche</h3></div>
+      </div>
+      <p>Tu es né avec un cerveau vide. Tout ce que tu penses, ressens et décides aujourd'hui est la somme de ce que ton environnement t'a inculqué de 0 à 6 ans — sans que tu aies eu ton mot à dire.</p>
+      <div class="quote">"Ta vie aujourd'hui = somme de tes pensées et actions depuis ta naissance, affectées par ton environnement parental, sociétal, gouvernemental."</div>
+      <div class="alert alert-warn">
+        <div class="alert-icon">⚡</div>
+        <div><strong>La règle des 100% :</strong> même si c'est pas ta faute (l'environnement t'a programmé), tu dois assumer 100% de responsabilité pour pouvoir avancer. Sans acceptation, pas de changement possible.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">📊</div>
+        <div><div class="subtitle">Fondamental #2</div><h3>La théorie du spectre</h3></div>
+      </div>
+      <p>Si tu es à l'extrême opposé négatif d'un spectre, il est <strong>beaucoup plus facile</strong> de passer à l'extrême opposé positif que si tu étais au milieu.</p>
+      <div class="spectrum-bar"></div>
+      <div class="spectrum-labels"><span>❌ Extrême négatif</span><span>😐 Le milieu (danger)</span><span>✅ Extrême positif</span></div>
+      <div class="alert alert-success">
+        <div class="alert-icon">💡</div>
+        <div>Si tu te sens au fond, tu as statistiquement plus de chances de remonter très haut. Le contraste crée une urgence et active des ressources mentales que les gens "du milieu" n'ont pas. Le milieu, c'est la zone la plus dangereuse.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">📈</div>
+        <div><div class="subtitle">Fondamental #3</div><h3>La courbe de l'effort — pourquoi 99% échouent</h3></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Optimisme non informé 🔥</h4>
+            <p>Tu démarres hypé. Rempli de dopamine. Plein cahier de notes. Tu ne connais pas encore les difficultés réelles.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Pessimisme informé 💀 — LE filtre</h4>
+            <p>Tu réalises que c'est technique, que c'est galère. 99% abandonnent ici. C'est le mur qui sépare tout le monde des résultats.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Le 1% qui pousse ✅</h4>
+            <p>Ceux qui traversent le mur deviennent champions. C'est pour ça que tout le monde n'est pas multimillionnaire.</p>
+          </div>
+        </div>
+      </div>
+      <div class="quote">"1er janvier : salle de sport blindée. 3 semaines plus tard : il reste 3 personnes."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">❤️</div>
+        <div><div class="subtitle">Fondamental #4</div><h3>L'amour bat la rage</h3></div>
+      </div>
+      <p>La culture "rage/grinta" est omniprésente dans l'entrepreneuriat. Mais l'amour est biologiquement plus puissant comme moteur.</p>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>❌ Vivre dans la rage</h4>
+          <p>Cortisol élevé, anxiété chronique, charge mentale maximale. Performance dégradée sur le long terme.</p>
+        </div>
+        <div class="mini-card">
+          <h4>✅ Vivre dans l'amour</h4>
+          <p>Cortisol diminué, anxiété réduite, sérénité augmentée. Meilleure performance, plus de vitesse de progression.</p>
+        </div>
+      </div>
+      <div class="alert alert-success">
+        <div class="alert-icon">🎯</div>
+        <div><strong>Action concrète :</strong> appelle quelqu'un que tu aimes aujourd'hui et dis-le lui. La charge mentale diminue immédiatement — c'est factuel, pas du feel-good.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🙏</div>
+        <div><div class="subtitle">Fondamental #5</div><h3>La loi de l'abondance (gratitude)</h3></div>
+      </div>
+      <p>Tu reçois plus quand tu remercies pour ce que tu as déjà. Ça marche que tu sois croyant ou athée — c'est une loi de la psychologie, pas de la religion.</p>
+      <div class="quote">"La plupart des humains qui se moquent de la gratitude sont pauvres."</div>
+      <p style="margin-top:12px">Pratique quotidienne : liste mentale ou écrite de 3 choses concrètes pour lesquelles tu es reconnaissant (la vue, les jambes, le cerveau). Ça réduit le cortisol et augmente l'énergie disponible pour agir.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">🐲</div>
+        <div><div class="subtitle">Fondamental #6</div><h3>Mentalité Tête de Dragon</h3></div>
+      </div>
+      <div class="quote">"Demande-moi une tête de dragon, paye-moi, je te la ramène. Je sais pas comment factuellement, mais paye-moi et je vais te la chercher."</div>
+      <p style="margin-top:12px">Tu n'attends pas d'être prêt pour y aller. Tu prends l'engagement, tu encaisses, et tu trouves les ressources EN MARCHE. La légitimité, la crédibilité, les résultats — tout vient après l'action, jamais avant.</p>
+      <div class="alert alert-danger">
+        <div class="alert-icon">🚫</div>
+        <div><strong>L'erreur fatale :</strong> attendre de "savoir délivrer" avant de vendre. Tu n'auras jamais le cash en attendant d'être expert. L'expertise se construit avec les premiers clients, pas avant.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">🔥</div>
+        <div><div class="subtitle">Fondamental #7</div><h3>Le syndrome de l'objet brillant</h3></div>
+      </div>
+      <p>Le plus grand ennemi de l'entrepreneur débutant : vouloir changer de business model dès que ça devient difficile.</p>
+      <ul style="margin-top:12px">
+        <li>Le vidéaste se met au SMMA parce que "ça l'ennuie"</li>
+        <li>Le caller passe au drop parce que "c'est relou"</li>
+        <li>Le dropshipper se met au coaching parce qu'il "ne se sent pas impliqué"</li>
+      </ul>
+      <div class="quote" style="margin-top:14px">"Y'a toujours une raison pour changer de business model. Mais celle qui marche, c'est celle que tu fais avec discipline."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">🧠</div>
+        <div><div class="subtitle">Fondamental #8</div><h3>80% mental, 20% technique</h3></div>
+      </div>
+      <p>Ce qui fait la différence entre un bon vendeur et un médiocre, ce n'est pas le script. C'est la maîtrise interne. Le mental. L'état dans lequel tu arrives sur un appel.</p>
+      <div class="quote">"Si quelqu'un est bon en cold-call, il est bon en closing. Par contre, un closer, demande-lui de prendre un cold-call — on va bien rigoler."</div>
+      <p style="margin-top:12px">Hiérarchie de difficulté : <strong>Cold-call &gt; Setting DM &gt; Closing.</strong> Maîtrise le cold-call, tout le reste devient facile.</p>
+    </div>
+  </div>
+
+  <!-- ===================== OFFRE ===================== -->
+  <div id="offre" class="section">
+    <div class="module-intro">
+      <h2>🎯 Module 2 — Construire son Offre Premium</h2>
+      <p>Les 5 piliers d'une offre qui scale, le pricing premium, le mécanisme unique, et comment se vendre sans expérience préalable.</p>
+    </div>
+
+    <div class="framework">
+      <div class="framework-title">⚙️ Les 5 Piliers d'une offre qui scale</div>
+      <div class="framework-body">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Promesse claire et chiffrée</h4>
+              <p>Pas "je vais vous aider" mais "je vous amène X résultat en Y jours". Chiffré, précis, sans flou.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Preuves incontestables</h4>
+              <p>Filmées, en direct, vérifiables. Pas des screenshots — des résultats documentés avec des vrais chiffres et une vraie chronologie.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>Pricing premium</h4>
+              <p>Vends cher dès le début. Un prix premium = clients de meilleure qualité, plus impliqués, meilleurs résultats. Le client ne se demande pas "est-ce que je paie" mais "comment je paie".</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Mécanisme unique nommé</h4>
+              <p>Crée un nom propriétaire pour ton système. Pas "du SMMA" mais "le Système XYZ". Personne d'autre n'a ton mécanisme — tu te différencies de toute la concurrence instantanément.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>Garantie solide</h4>
+              <p>Soit remboursement total si pas de résultat (jamais le budget pub), soit continuation gratuite jusqu'au résultat. La garantie prouve ta confiance dans ta propre offre.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">💎</div>
+        <div><div class="subtitle">Stratégie pricing</div><h3>Vendre premium sans expérience</h3></div>
+      </div>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>❌ École "gratuit pour débuter"</h4>
+          <p>Travailler gratuitement pour avoir des preuves. Positionnement de losing. Les gens ne valorisent pas ce qu'ils ont eu gratis.</p>
+        </div>
+        <div class="mini-card">
+          <h4>✅ École "garantie + conviction"</h4>
+          <p>Vendre avec une garantie béton dès le début. Le prix élevé + la garantie = la preuve de ta conviction. Clients plus engagés, meilleurs résultats.</p>
+        </div>
+      </div>
+      <div class="alert alert-success" style="margin-top:14px">
+        <div class="alert-icon">💡</div>
+        <div><strong>L'astuce de la social proof :</strong> tu n'as pas de résultats à toi ? Montre les résultats du modèle ou de la niche. "Ça marche chez d'autres artisans comme vous — voici leurs résultats." La social proof porte sur le système, pas sur ta personne.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🎛️</div>
+        <div><div class="subtitle">Flexibilité pricing</div><h3>S'adapter au prospect</h3></div>
+      </div>
+      <p>Au début de ta carrière, ne sois pas rigide sur ton tarif. Deux options selon le profil :</p>
+      <div class="grid-2" style="margin-top:14px">
+        <div class="mini-card">
+          <h4>Option A — High-ticket fixe</h4>
+          <p>Prix d'entrée élevé fixe (ex: 5-10K€). Augmente la valeur perçue. Si tu proposes ensuite une réduction, ça crédibilise encore plus l'offre initiale.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Option B — Upfront + % CA</h4>
+          <p>Prospect avec petit budget ? 1000€ upfront + 10-20% sur le CA généré. Tu montres que tu crois en tes résultats et tu t'alignes avec le succès du client.</p>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:14px">"N'hésitez pas à être flexibles. Une fois que vous avez de l'expérience, on ne dit jamais de baisser vos prix. Mais là, vous commencez."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">📝</div>
+        <div><div class="subtitle">Présentation de l'offre</div><h3>Vendre du résultat, pas des features</h3></div>
+      </div>
+      <p>La plupart des débutants listent des features. C'est la mort commerciale.</p>
+      <div class="grid-2" style="margin-top:14px">
+        <div class="mini-card">
+          <h4>❌ Liste de features (à bannir)</h4>
+          <p>"Je fais des méta ads, du A/B testing, des landing pages, du reporting hebdo, du WhatsApp illimité..."</p>
+        </div>
+        <div class="mini-card">
+          <h4>✅ Résultat + clarté temporelle</h4>
+          <p>"Semaine 1-2 : setup. Semaine 3-4 : premières données. Dans 45 jours : X chantiers qualifiés."</p>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:14px">"On vend du résultat et de la clarté. Pas des features, pas du WhatsApp. Si y'a pas de clarté, ça close pas."</div>
+      <div class="alert alert-danger" style="margin-top:12px">
+        <div class="alert-icon">🚫</div>
+        <div><strong>Piège du fondateur :</strong> expliquer en détail comment tu travailles. Le "comment" crée des questions sur le "comment". Le prospect se noie dans la technique et ne prend pas de décision.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">🔍</div>
+        <div><div class="subtitle">Choix de niche</div><h3>Il n'y a pas de mauvaise niche</h3></div>
+      </div>
+      <p>Une bonne niche coche 3 cases :</p>
+      <ul style="margin-top:12px">
+        <li>Panier moyen intéressant (le client peut te payer)</li>
+        <li>Douleur réelle et verbalisable (problème d'acquisition, de visibilité...)</li>
+        <li>Accès direct au décisionnaire (pas de secrétariat, pas d'intermédiaires)</li>
+      </ul>
+      <div class="alert alert-warn" style="margin-top:14px">
+        <div class="alert-icon">⚠️</div>
+        <div><strong>Niche à éviter en démarrage :</strong> avocats d'affaires, grandes entreprises — décisionnaires planqués derrière des assistants. Cible les indépendants et PME (artisans, installateurs, professions libérales) où tu parles directement au patron.</div>
+      </div>
+      <div class="quote">"Le choix de la niche, c'est comme le produit miracle en e-commerce. Les gens ne veulent pas dire la leur. Mais en vrai, il n'y a pas de mauvaise niche."</div>
+    </div>
+  </div>
+
+  <!-- ===================== COLD CALL ===================== -->
+  <div id="coldcall" class="section">
+    <div class="module-intro">
+      <h2>📞 Module 3 — Le Cold-Call Masterclass</h2>
+      <p>Les techniques avancées du cold-call : structure d'accroche, ton, concours de circonstance, gestion des objections classiques, et les erreurs qui te font sonner comme une IA.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">📊</div>
+        <div><div class="subtitle">Base #1</div><h3>Le volume, c'est la norme</h3></div>
+      </div>
+      <div class="alert alert-warn">
+        <div class="alert-icon">📞</div>
+        <div><strong>250 appels/jour, c'est le target minimum.</strong> Pour avoir 250 conversations effectives, il faut en composer 350-400. En dessous de 250, tu es sous le marché.</div>
+      </div>
+      <div class="quote">"Et quand on dit que le cold-call c'est dur, faut remettre dans le contexte. Dur c'est Palestine. Pas composer un numéro à 250 par jour."</div>
+      <p style="margin-top:12px"><strong>Astuce volume vs feedback :</strong> si tu ne peux pas faire 250 appels/jour (job à côté, etc.), compense par le feedback. Réécoute tes 20 calls 45 fois. L'optimisation remplace le volume.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">🎤</div>
+        <div><div class="subtitle">Base #2</div><h3>Sonne humain, pas robot</h3></div>
+      </div>
+      <div class="alert alert-danger">
+        <div class="alert-icon">🚨</div>
+        <div><strong>Signal d'alarme absolu :</strong> si un prospect te dit "j'ai cru que c'était une IA", tu as tout perdu. C'est le symptôme d'un script trop fluide, trop linéaire, sans vie.</div>
+      </div>
+      <p style="margin-top:12px">Symptômes d'un caller "robot" :</p>
+      <ul style="margin-top:8px">
+        <li>Mêmes tonalités, mêmes accroches, mot pour mot, virgule pour virgule</li>
+        <li>Pas de variations, pas d'improvisation sur les détails de l'appel</li>
+        <li>Lecture du script sans incarnation</li>
+        <li>Trop fluide — la fluidité parfaite n'est pas naturelle</li>
+      </ul>
+      <div class="quote" style="margin-top:12px">"C'est pas une question d'être au courant de ce que tu dis. C'est à quel point tu incarnes vraiment les choses. L'intonation, l'écoute, l'intention — le prospect le ressent même s'il sait pas pourquoi."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">🎭</div>
+        <div><div class="subtitle">Technique #1</div><h3>Les 3 tonalités à maîtriser</h3></div>
+      </div>
+      <div class="tonality-card">
+        <h4>🧓 Tonalité "papi perdu" — Pour l'ouverture</h4>
+        <p>Hésitant, désarmant, légèrement perdu. Ça baisse les défenses immédiatement. Contre-intuitif : on pense qu'il faut de l'énergie à fond, c'est l'inverse au démarrage.</p>
+        <div class="tonality-ex">"Au fait... excusez-moi, juste pour être sûr que je suis bien avec... vous êtes bien Monsieur Dupont ?"</div>
+      </div>
+      <div class="tonality-card">
+        <h4>⚡ Tonalité challengeante — Pour engager</h4>
+        <p>Pas dans la confrontation, mais dans le défi positif. Tu plantes une question à laquelle le prospect répond instinctivement "bien évidemment".</p>
+        <div class="tonality-ex">"Je me posais la question... vous seriez capable d'absorber 5 chantiers de plus dans les 90 prochains jours ?"</div>
+      </div>
+      <div class="tonality-card">
+        <h4>🎓 Tonalité experte — Pour asseoir l'autorité</h4>
+        <p>Grave, calme, débit lent. Tu énonces une vérité sur leur marché. Le débit plus lent = autorité perçue.</p>
+        <div class="tonality-ex">"50% des artisans en rénovation travaillent aujourd'hui sans aucun système de génération de leads prévisible."</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">🎲</div>
+        <div><div class="subtitle">Technique #2</div><h3>Les concours de circonstances</h3></div>
+      </div>
+      <p>Chaque appel est unique parce que chaque prospect est unique. Les "concours de circonstances" = personnaliser l'appel à partir de tout ce que tu perçois sur le prospect.</p>
+      <ul style="margin-top:12px">
+        <li>Nom à consonance étrangère → fais un commentaire bienveillant sur son origine</li>
+        <li>Accent régional → rebondis sur sa région, son département</li>
+        <li>Il mentionne son ancienneté → "25 ans de métier, c'est rare aujourd'hui"</li>
+        <li>Fond sonore (chantier, machine) → "Vous avez l'air bien occupé, ça tourne !"</li>
+      </ul>
+      <div class="quote" style="margin-top:12px">"Force-toi à te servir des concours de circonstances et de l'éloquence. Écoute des personnes qui ont un phrasé voluptueux, varié. Approprie-toi ce vocabulaire."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">❓</div>
+        <div><div class="subtitle">Technique #3</div><h3>Questions fermées à négation</h3></div>
+      </div>
+      <p>Changer la polarité d'une question change radicalement le taux de réponse positive.</p>
+      <div class="grid-2" style="margin-top:14px">
+        <div class="mini-card">
+          <h4>❌ Formulation standard</h4>
+          <p>"Est-ce que je vous appelle au bon moment ?" → facile de dire non, psychologiquement confortable pour le refus.</p>
+        </div>
+        <div class="mini-card">
+          <h4>✅ Négation cognitive</h4>
+          <p>"Est-ce que je vous appelle <em>pas</em> à un moment inopportun ?" → cognitivement plus dur à refuser. Le prospect répond "non, c'est bon" par réflexe.</p>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:12px">"Cognitivement, c'est beaucoup plus dur de dire 'oui' (= pardon) que 'non'. Le prospect répond instinctivement 'non, c'est bon' et t'as gagné la suite."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">📧</div>
+        <div><div class="subtitle">Technique #4</div><h3>L'objection "envoyez-moi un mail"</h3></div>
+      </div>
+      <div class="alert alert-success">
+        <div class="alert-icon">🏆</div>
+        <div>C'est l'objection qui fait peur à tout le monde. Mais c'est en réalité une des plus faciles à retourner.</div>
+      </div>
+      <div class="steps" style="margin-top:14px">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Accepter la demande</h4>
+            <p>"Ok, je veux bien vous envoyer un mail."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Qualifier le mail</h4>
+            <p>"Mais qu'est-ce qui est important pour vous d'avoir dans ce mail pour me répondre ?"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Transformer en RDV</h4>
+            <p>Quand il dit "expliquez-moi tout" → "Let's go, quand est-ce que je peux vous prendre 15 minutes pour vous expliquer ce qu'il y a dans le mail ?" → RDV.</p>
+          </div>
+        </div>
+      </div>
+      <div class="quote">"Quand j'entends un mec dire 'envoyez-moi un mail', dans ma tête j'ai déjà pris le rendez-vous."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">🔍</div>
+        <div><div class="subtitle">Technique #5</div><h3>La méthode R0 — Le mini-RDV dans le cold call</h3></div>
+      </div>
+      <p>Le cold-call ne sert pas qu'à prendre un rendez-vous. Il sert à qualifier le prospect ET à chauffer le lead.</p>
+      <p style="margin-top:12px">Une fois que tu as le RDV en poche, pose des questions de qualification :</p>
+      <ul style="margin-top:8px">
+        <li>"Combien de chantiers vous faites par semaine ?"</li>
+        <li>"Vous couvrez quelle zone géographique ?"</li>
+        <li>"Vous êtes combien dans votre équipe ?"</li>
+      </ul>
+      <div class="alert alert-success" style="margin-top:14px">
+        <div class="alert-icon">✅</div>
+        <div><strong>Triple bénéfice :</strong> le prospect honore mieux le RDV (il a passé du temps avec toi), il cogite entre R0 et R1, et tu arrives au vrai RDV avec un lead déjà chaud.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">📊</div>
+        <div><div class="subtitle">Technique #6</div><h3>Le cold-call comme outil de marché</h3></div>
+      </div>
+      <p>Avant de vendre une niche, appelle pour comprendre ses douleurs. Le cold-call est la meilleure étude de marché possible — gratuite, directe, immédiate.</p>
+      <div class="alert alert-warn" style="margin-top:12px">
+        <div class="alert-icon">💡</div>
+        <div><strong>L'astuce journaliste :</strong> présente-toi comme rédigeant un article sur leur métier pour un journal local. Propose de faire apparaître le nom de leur entreprise. Ils te livrent toutes leurs douleurs et tu confirmes si le marché est viable — sans jamais pitcher.</div>
+      </div>
+      <div class="alert alert-success" style="margin-top:8px">
+        <div class="alert-icon">📅</div>
+        <div><strong>Timing optimal :</strong> les gens décrochent le plus le mardi, mercredi, jeudi. Évite le lundi matin et le vendredi après-midi.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CLOSING ===================== -->
+  <div id="closing" class="section">
+    <div class="module-intro">
+      <h2>💰 Module 4 — L'Art du Closing</h2>
+      <p>La vente est une conversation, pas un monologue. Ce module couvre le cadrage, la découverte, les tonalités, les objections, et le mindset du vendeur de haut niveau.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🧭</div>
+        <div><div class="subtitle">Philosophie</div><h3>Ce qu'est vraiment la vente</h3></div>
+      </div>
+      <div class="quote">"La vente, c'est aider quelqu'un à prendre la meilleure décision possible. Arrêtez de croire que vous allez contenter les objections et convaincre n'importe qui. Vous accompagnez quelqu'un dans une prise de décision."</div>
+      <p style="margin-top:12px">La vente est un rapport de force. L'objectif : qu'il ne soit <strong>pas en ta défaveur</strong>. Pas que tu écrases le prospect — que tu contrôles la conversation, poses un cadre, guides sans forcer.</p>
+      <div class="alert alert-danger" style="margin-top:12px">
+        <div class="alert-icon">🚫</div>
+        <div>On ne vend pas de lunettes à un aveugle. Si le prospect n'a pas le problème que tu résous, ne force pas. La vente éthique = vendre à qui en a vraiment besoin.</div>
+      </div>
+    </div>
+
+    <div class="framework">
+      <div class="framework-title">🗺️ Les 6 étapes d'un appel parfait</div>
+      <div class="framework-body">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Cadrage — Poser les règles du jeu</h4>
+              <p>Durée, contexte, objectif commun. "Est-ce qu'on est d'accord pour qu'à la fin, si ça match, on prenne une décision ?" — permission de décider donnée dès le début.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Présentation — Créer légitimité, vite</h4>
+              <p>Rapide, factuel, sans lister ton CV. Si tu manques d'expérience, ne donne pas ton âge. Mets en avant ta passion et ta mission.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>Découverte — La phase la plus importante ★</h4>
+              <p>Faire accoucher la problématique. L'enfer (situation actuelle douloureuse) et le paradis (projection avec ta solution). Un problème dur, urgent, reconnu par le prospect lui-même.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>Méthode R0 — Closer avant le closing</h4>
+              <p>Poser des questions de qualification pour chauffer le lead. À la fin du cold-call ou au début du R1, avant même de pitcher ton offre.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>Gestion des objections — Isoler, pas contrer</h4>
+              <p>Une objection ne se traite pas à chaud. On la creuse pour trouver la vraie objection cachée derrière l'objection de surface.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>Closing — Une suite logique, pas un moment</h4>
+              <p>Si t'as bien posé les questions et montré ta valeur, le closing arrive naturellement. Y'a pas un arbitre qui siffle "c'est l'heure du closing".</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">🌡️</div>
+        <div><div class="subtitle">Concept clé</div><h3>Le thermomètre du prospect</h3></div>
+      </div>
+      <p>Chaque prospect démarre à une température différente :</p>
+      <div class="spectrum-bar" style="margin-top:14px"></div>
+      <div class="spectrum-labels">
+        <span>-3°C (méfiant)</span>
+        <span>0°C (neutre)</span>
+        <span>10°C (client)</span>
+      </div>
+      <ul>
+        <li>0°C = il ne te connaît pas, il s'en fout</li>
+        <li>-3°C = il n'aime pas la pub ou a eu une mauvaise expérience</li>
+        <li>10°C = cuit, c'est ton client</li>
+      </ul>
+      <div class="alert alert-warn" style="margin-top:12px">
+        <div class="alert-icon">⚡</div>
+        <div><strong>La règle du thermomètre :</strong> chaque question que tu poses doit faire monter la température. Si elle ne fait pas avancer le schmilblick, elle ne sert à rien. Réécoute tes calls avec cette grille.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">😈</div>
+        <div><div class="subtitle">Concept clé</div><h3>L'enfer et le paradis</h3></div>
+      </div>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>😈 L'Enfer</h4>
+          <p>La situation actuelle douloureuse du prospect. Tu la fais <em>verbaliser</em> par lui-même — pas toi qui l'énonces. "Qu'est-ce qui est perfectible dans votre acquisition aujourd'hui ?"</p>
+        </div>
+        <div class="mini-card">
+          <h4>😇 Le Paradis</h4>
+          <p>Ce qu'il pourrait avoir avec ta solution. Tu projettes l'après. "Imaginez dans 45 jours : X chantiers supplémentaires, vous couvrez la région Y."</p>
+        </div>
+      </div>
+      <p style="margin-top:14px"><strong>La règle cruciale :</strong> le problème doit être reconnu par le prospect lui-même (pas imposé par toi) ET urgent (notion de timing). Sans ces deux critères, pas de décision.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">🎯</div>
+        <div><div class="subtitle">Gestion des objections</div><h3>Isoler avant de traiter</h3></div>
+      </div>
+      <div class="quote">"Le but d'une objection, c'est pas d'y répondre. C'est de l'isoler. Comme un médecin qui ne te donne pas un médicament juste parce que t'as mal à la tête — il cherche le vrai problème avant de soigner."</div>
+
+      <div class="steps" style="margin-top:16px">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Objection "j'ai besoin d'y réfléchir"</h4>
+            <p>Ne dis jamais "ok pas de problème". Réponds : "Qu'est-ce qui fait que vous n'êtes pas en capacité de décider maintenant ? C'est que je ne vous ai pas donné assez d'infos, ou il y a autre chose ?"</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Objection "c'est trop cher"</h4>
+            <p>Teste si c'est un problème de budget ou de prix : "Si c'était 100% gratuit, vous viendriez avec moi ?" OUI → problème de prix (valeur mal vendue). NON → problème de valeur perçue.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Objection "j'ai pas le temps"</h4>
+            <p>À cette objection, tu lui prends du temps. La vente est conversationnelle — tu n'as pas le droit de laisser filer. "Je comprends. Dites-moi juste, en 2 minutes, ce qui vous bloque le plus en ce moment."</p>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-danger" style="margin-top:14px">
+        <div class="alert-icon">🚨</div>
+        <div><strong>Spoiler alert :</strong> le prix n'est JAMAIS le vrai problème. Si le prospect dit "c'est trop cher", c'est que tu as mal vendu la valeur. Travaille ta phase de découverte, pas ton prix.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🎤</div>
+        <div><div class="subtitle">Mindset vendeur</div><h3>Vendre le résultat, jamais le comment</h3></div>
+      </div>
+      <div class="quote">"Arrêtez d'être des techniciens. On s'en fout que vous leur expliquiez comment vous faites de l'acquisition. On s'en fout du comment. Vendez le résultat, le pourquoi, l'après."</div>
+      <p style="margin-top:12px">Dès que tu entres dans le "comment", le prospect pose des questions techniques auxquelles tu n'as peut-être pas de réponse. Tu perds l'autorité et le contrôle de la conversation.</p>
+      <div class="quote">"Si t'as ce problème d'orgueil du fondateur — 'j'ai construit un truc incroyable donc je vais tout expliquer' — fais pas de la vente. Viens, on va en thérapie."</div>
+    </div>
+  </div>
+
+  <!-- ===================== TERRAIN ===================== -->
+  <div id="terrain" class="section">
+    <div class="module-intro">
+      <h2>🏙️ Module 5 — Prospection Terrain</h2>
+      <p>Les codes du démarchage physique, la posture corporelle, les approches qui fonctionnent, et comment transformer une rencontre fortuite en opportunité business.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🧍</div>
+        <div><div class="subtitle">Physique #1</div><h3>L'approche — angle, distance, mains</h3></div>
+      </div>
+      <ul>
+        <li><strong>L'angle :</strong> n'arrive jamais frontalement. Approche par le côté ou légèrement en diagonale — le mec ne se sent pas "attaqué" et tu as une seconde de plus avant qu'il déclenche ses défenses.</li>
+        <li><strong>La distance :</strong> deux épaules de distance minimum. Trop proche = agression. Positionne-toi à côté de lui, regardez légèrement dans la même direction — vous partagez un espace, pas une confrontation.</li>
+        <li><strong>Les mains :</strong> basses, visibles, ouvertes. Jamais de grands gestes vers le haut ou vers le prospect. Les mains qui s'agitent = instinct de danger déclenché.</li>
+      </ul>
+      <div class="quote" style="margin-top:12px">"T'attaques frontalement, c'est mauvais. Faut arriver un peu de côté, un peu en redact. Le mec sait pas que t'es là, t'arrives en doucement."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">🗣️</div>
+        <div><div class="subtitle">Physique #2</div><h3>L'ouverture verbale</h3></div>
+      </div>
+      <p>Séquence d'ouverture optimale :</p>
+      <div class="steps" style="margin-top:14px">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>"Excusez-moi, je me permets rapidement."</h4>
+            <p>Signale que tu respectes son temps. Il ne se ferme pas immédiatement.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>"Vous parlez français ?"</h4>
+            <p>Question courte, innocente, qui oblige à répondre et brise le silence.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>"Vous êtes entrepreneur ?"</h4>
+            <p>Qualification immédiate. Si non, tu ne perds pas son temps ni le tien. Si oui, tu as la permission de continuer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">🃏</div>
+        <div><div class="subtitle">Physique #3</div><h3>La carte de visite — l'outil sous-estimé</h3></div>
+      </div>
+      <p>Laisse toujours ta carte, même si la personne refuse la caméra, refuse l'entretien, ou est pressée. La carte de visite physique transfère la relation dans la poche du prospect.</p>
+      <div class="quote">"On sait jamais ce qui va se passer. Le mec t'a passé sa carte, il était limite à deux doigts de se cacher pour la photo — mais on a son contact. C'est un closing."</div>
+      <div class="alert alert-success" style="margin-top:12px">
+        <div class="alert-icon">💡</div>
+        <div><strong>QR Code :</strong> propose de scanner son contact en direct via QR code. Moderne, rapide, et tu quittes la conversation avec son vrai numéro.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">💎</div>
+        <div><div class="subtitle">Physique #4</div><h3>L'approche des ultra-riches</h3></div>
+      </div>
+      <div class="quote">"Il faut les CHOQUER respectueusement. Personne ne les choque dans leur vie. C'est ce qui leur manque."</div>
+      <p style="margin-top:12px">Les personnes très aisées sont entourées de gens qui les flattent, acquiescent, ne les challengent jamais. Un interlocuteur qui les surprend respectueusement sort du lot et crée immédiatement de l'intérêt.</p>
+      <div class="alert alert-warn" style="margin-top:12px">
+        <div class="alert-icon">⚡</div>
+        <div><strong>Pour les refus caméra :</strong> "C'est ok si je ne filme pas. Mais est-ce que je peux vous parler seul ?" Le culot respectueux ouvre des portes.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">🎯</div>
+        <div><div class="subtitle">Mindset terrain</div><h3>Le monopole et les prix</h3></div>
+      </div>
+      <div class="quote">"Quand t'as le monopole sur un marché, tu fais ce que tu veux. Apple, ils font ×2 sur les prix. Quand t'es top 1 FR sur un domaine, triple tes prix maintenant."</div>
+      <p style="margin-top:12px">Si tu es clairement la meilleure option sur ton marché niche (par exemple : le meilleur expert méta-ads pour les menuisiers du 74), tu n'as plus de concurrence réelle. Tu peux multiplier tes prix sans justification supplémentaire.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">🔄</div>
+        <div><div class="subtitle">Leçon stratégique</div><h3>Ne jamais arrêter l'acquisition</h3></div>
+      </div>
+      <div class="alert alert-danger">
+        <div class="alert-icon">🚨</div>
+        <div><strong>L'erreur numéro 1 qui tue les business en croissance :</strong> fermer l'acquisition dès que tu closes tes premiers clients pour te concentrer sur la délivrabilité.</div>
+      </div>
+      <p style="margin-top:12px">Résultat systématique : creux total 6-8 semaines plus tard quand les premiers clients arrivent à terme. Tu dois <strong>toujours</strong> garder un pied dans l'acquisition, même en pleine délivrabilité.</p>
+      <div class="quote">"Faut TOUJOURS garder un peu dans l'acquisition, même quand tu closes. Même si c'est 30 minutes par jour."</div>
+    </div>
+  </div>
+
+  <!-- ===================== SMMA ===================== -->
+  <div id="smma" class="section">
+    <div class="module-intro">
+      <h2>📱 Module 6 — Délivrabilité SMMA</h2>
+      <p>Tout ce qui se passe après la signature : onboarding, avatar client, structure d'une ad qui convertit, setup Meta, métriques, pricing. Le guide complet pour délivrer ce que tu as vendu.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">👥</div>
+        <div><div class="subtitle">Étape 1</div><h3>L'appel d'onboarding — comprendre l'avatar</h3></div>
+      </div>
+      <p>Dès que le client signe, appel d'onboarding immédiat. L'objectif : comprendre le client de <strong>ton client</strong>.</p>
+      <div class="alert alert-warn" style="margin-top:12px">
+        <div class="alert-icon">💡</div>
+        <div><strong>Le renversement mental :</strong> tu ne vends pas à l'artisan. Tu vends à ses clients. Comprends d'abord qui achète chez lui : âge, localisation, douleur principale, déclencheur d'achat.</div>
+      </div>
+      <ul style="margin-top:12px">
+        <li>Qui sont ses meilleurs clients actuels ? (âge, zone géo, type de maison)</li>
+        <li>Quelle est leur douleur principale ?</li>
+        <li>Quel budget ils ont typiquement ?</li>
+        <li>Qu'est-ce qui les a convaincus de passer à l'action ?</li>
+      </ul>
+      <p style="margin-top:10px"><em>Demande directement à l'artisan — ça fait 20 ans qu'il est dans le métier, il connaît parfaitement son client.</em></p>
+    </div>
+
+    <div class="framework">
+      <div class="framework-title">📹 Structure d'une ad vidéo qui convertit</div>
+      <div class="framework-body">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>HOOK — Les 20 premières secondes</h4>
+              <p><strong>3 règles impératives :</strong> cibler géographiquement et démographiquement dès le 1er mot, toucher une douleur précise, avoir de l'énergie dynamique. Exemple : "Propriétaire d'une maison en Île-de-France ? Vous en avez marre de vos factures d'électricité qui explosent ?"</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>CTA #1 — Immédiatement après le hook</h4>
+              <p>"Si vous êtes propriétaire en [région] et que vous voulez [résultat] — cliquez sur 'en savoir plus' maintenant."</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>BODY — Renforcer la décision</h4>
+              <p>L'offre claire + témoignages vidéo clients (même flouté c'est puissant). "Demandez à l'artisan ses 3-5 meilleurs avis clients en vidéo — c'est la meilleure preuve sociale possible."</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>CTA #2 — Final</h4>
+              <p>"Si vous voulez obtenir le même résultat qu'eux, cliquez sur 'en savoir plus'." Deux CTA dans une bonne pub = mieux qu'un seul.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">🎬</div>
+        <div><div class="subtitle">Production</div><h3>Format vidéo et conseils de tournage</h3></div>
+      </div>
+      <div class="grid-2">
+        <div class="mini-card">
+          <h4>✅ Format recommandé</h4>
+          <p>Vidéo simple, "fast cam", sans montage dynamique excessif. Style neutre et naturel. Plus long est souvent mieux — 3-4 minutes de résultats clients dans la 2e partie.</p>
+        </div>
+        <div class="mini-card">
+          <h4>📊 Vidéo vs Image statique</h4>
+          <p>La vidéo donne moins de leads mais de meilleure qualité. Sur 10 leads image tu en closes 1. Sur 3 leads vidéo tu en closes 2. Pense en taux de conversion, pas en volume brut.</p>
+        </div>
+      </div>
+      <div class="alert alert-warn" style="margin-top:14px">
+        <div class="alert-icon">💡</div>
+        <div><strong>Règle du triage :</strong> ta pub doit faire fuir les non-prospects et garder les bons leads. Si n'importe qui clique, tes leads sont mauvais. Sois spécifique dès le hook pour qualifier d'entrée.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-gold">⚙️</div>
+        <div><div class="subtitle">Setup technique</div><h3>Meta Business Manager — l'essentiel</h3></div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Créer les comptes</h4>
+            <p>Compte Facebook pro pour le client + Business Manager pour lui ET pour toi.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Échanges de numéros BM</h4>
+            <p>Récupère le numéro BM à 10 chiffres du client. Il t'ajoute en partenaire sur son compte publicitaire ET sa page.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Accepter l'accès</h4>
+            <p>Tu reçois une notification — accepte et attribue à ton BM.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Lancer depuis son compte</h4>
+            <p>La pub est toujours créée depuis le gestionnaire de pub du CLIENT, pas le tien. Tu gères, lui est propriétaire.</p>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-success" style="margin-top:14px">
+        <div class="alert-icon">🤖</div>
+        <div><strong>Astuce IA :</strong> les interfaces Meta changent chaque semaine. Prends des screenshots à chaque étape, colle-les dans Claude ou ChatGPT et demande "j'en suis là, quelle est l'étape suivante ?" — plus fiable que n'importe quel tuto YouTube.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-green">📈</div>
+        <div><div class="subtitle">Métriques</div><h3>La seule métrique qui compte vraiment</h3></div>
+      </div>
+      <div class="alert alert-warn">
+        <div class="alert-icon">🎯</div>
+        <div><strong>Le CPL (Coût Par Lead) et sa conversion.</strong> Le CTR (taux de clic) est intéressant à observer mais ne dit rien sur la rentabilité. Un CTR de 18% qui ne convertit pas = zéro.</div>
+      </div>
+      <p style="margin-top:12px">La vraie question : est-ce que le lead est rentable ? Si le client met 300€ en pub, obtient 1 lead, et le signe à 1K€ → c'est rentable. C'est tout ce qui compte.</p>
+      <div class="grid-2" style="margin-top:14px">
+        <div class="mini-card">
+          <h4>Budget minimum</h4>
+          <p>30€/jour payé par le client (pas toi). C'est son investissement pub, pas inclus dans tes honoraires.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Pas besoin de site web</h4>
+          <p>Un landing page simple ou même un formulaire Meta suffit pour démarrer. Le site vient plus tard, quand le modèle est prouvé.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-purple">💰</div>
+        <div><div class="subtitle">Pricing</div><h3>Comment tarifer ses services SMMA</h3></div>
+      </div>
+      <div class="framework" style="margin-bottom:0">
+        <div class="framework-title">💡 Modèle de pricing recommandé</div>
+        <div class="framework-body">
+          <ul>
+            <li><strong>Upfront :</strong> 1000€ pour la mise en place (création ads, setup BM, onboarding)</li>
+            <li><strong>Résultat :</strong> 1000€ supplémentaires quand l'artisan atteint X€ de CA grâce aux leads</li>
+            <li><strong>Alternative % :</strong> pour un prospect avec petit budget → 500-1000€ upfront + 10-20% du CA généré</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:14px">"Faites des offres au résultat. Une partie en upfront, une partie au résultat. Vous rassurer le client ET vous prouvez votre confiance dans votre propre travail."</div>
+      <div class="alert alert-success" style="margin-top:12px">
+        <div class="alert-icon">🏆</div>
+        <div><strong>Social proof sans expérience :</strong> montre des résultats du SMMA dans la niche du client, pas tes propres résultats. "Voici ce que d'autres artisans en rénovation ont obtenu avec Meta Ads." La preuve porte sur le modèle, pas sur ta personne.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-pink">🔗</div>
+        <div><div class="subtitle">Rétention client</div><h3>Suivre et tisser le lien</h3></div>
+      </div>
+      <ul>
+        <li><strong>Ne pas attendre l'info :</strong> traque tes clients après livraison. Va chercher les résultats proactivement, ne les attends pas.</li>
+        <li><strong>Tisser un lien émotionnel :</strong> plus il y a une vraie relation, plus il est difficile pour eux d'arrêter le contrat. C'est ton meilleur outil de rétention.</li>
+        <li><strong>Savoir dire non :</strong> un prospect qui postpone en boucle n'est pas intéressé. Ne passe pas 3 semaines sur quelqu'un qui reporte sans cesse — c'est du temps perdu.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
